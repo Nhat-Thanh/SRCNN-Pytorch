@@ -5,8 +5,7 @@ import numpy as np
 import os
 
 def read_image(filepath):
-    image = io.read_file(filepath)
-    image = io.decode_png(image, io.ImageReadMode.RGB)
+    image = io.read_image(filepath, io.ImageReadMode.RGB)
     return image
 
 def write_image(filepath, src):
@@ -67,8 +66,8 @@ def resize_bicubic(src, h, w):
     image = transforms.Resize((h, w), transforms.InterpolationMode.BICUBIC)(src)
     return image
 
-def gaussian_blur(src, kernel_size=3, sigma=0.5):
-    blur_image = transforms.GaussianBlur(kernel_size=3, sigma=sigma)(src)
+def gaussian_blur(src, ksize=3, sigma=0.5):
+    blur_image = transforms.GaussianBlur(kernel_size=ksize, sigma=sigma)(src)
     return blur_image
     
 def upscale(src, scale):
