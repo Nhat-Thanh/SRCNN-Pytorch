@@ -13,6 +13,7 @@ architecture = FLAGS.architecture
 image_path = FLAGS.image_path
 ckpt_path = FLAGS.ckpt_path
 scale = FLAGS.scale
+device = 'cpu'
 
 if scale < 1 or scale > 5:
     ValueError("scale should be positive and less than 5")
@@ -42,7 +43,7 @@ lr_image = torch.unsqueeze(lr_image, dim=0)
 #  predict and save image
 # -----------------------------------------------------------
 
-model = SRCNN(architecture)
+model = SRCNN(architecture, device)
 model.load_weights(ckpt_path)
 sr_image = model.predict(lr_image)[0]
 
