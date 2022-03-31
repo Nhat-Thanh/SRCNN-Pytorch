@@ -53,7 +53,7 @@ class dataset:
 
         data = np.array(data)
         labels = np.array(labels)
-        data, labels = shuffle(data, labels)
+        # data, labels = shuffle(data, labels)
         
         np.save(self.data_file, data)
         np.save(self.labels_file, labels)
