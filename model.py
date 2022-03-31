@@ -26,6 +26,8 @@ class SRCNN:
         self.ckpt_path = ckpt_path
     
     def load_checkpoint(self, ckpt_path):
+        if not exists(ckpt_path):
+            return
         self.ckpt_man = torch.load(ckpt_path)
         self.optimizer.load_state_dict(self.ckpt_man['optimizer'])
         self.model.load_state_dict(self.ckpt_man['model'])
