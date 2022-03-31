@@ -5,7 +5,8 @@ import numpy as np
 import os
 
 def read_image(filepath):
-    image = io.read_image(filepath, io.ImageReadMode.RGB)
+    image = io.read_file(filepath)
+    image = io.decode_png(image, io.ImageReadMode.RGB)
     return image
 
 def write_image(filepath, src):
