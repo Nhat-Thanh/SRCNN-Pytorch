@@ -82,7 +82,7 @@ class SRCNN:
                 loss_mean = []
                 metric_mean = []
                 torch.save({'step': cur_step,
-                            'model': self.model.state_dict()
+                            'model': self.model.state_dict(),
                             'optimizer': self.optimizer.state_dict()
                             }, self.ckpt_path)
                 
