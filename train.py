@@ -1,3 +1,4 @@
+from pyexpat import model
 from utils.dataset import dataset
 from utils.common import PSNR
 from model import SRCNN
@@ -55,7 +56,7 @@ test_set.load_data()
 # -----------------------------------------------------------
 
 srcnn = SRCNN(architecture)
-srcnn.setup(optimizer=torch.optim.Adam(lr=2e-5),
+srcnn.setup(optimizer=torch.optim.Adam(srcnn.model.parameters(), lr=2e-5),
             loss=torch.nn.MSELoss(),
             model_path=model_path,
             ckpr_path=ckpt_path,
