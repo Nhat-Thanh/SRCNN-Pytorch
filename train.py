@@ -38,7 +38,6 @@ if architecture == "935":
 elif architecture == "955":
     hr_crop_size = 17
 
-device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 train_set = dataset(dataset_dir, "train")
 train_set.generate(lr_crop_size, hr_crop_size)
@@ -57,7 +56,8 @@ test_set.load_data()
 #  Train
 # -----------------------------------------------------------
 
-srcnn = SRCNN(architecture)
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
+srcnn = SRCNN(architecture, device)
 srcnn.setup(optimizer=torch.optim.Adam(srcnn.model.parameters(), lr=2e-5),
             loss=torch.nn.MSELoss(),
             model_path=model_path,
