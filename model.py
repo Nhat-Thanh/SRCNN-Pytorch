@@ -49,11 +49,11 @@ class SRCNN:
             lr, hr, isEnd = dataset.get_batch(batch_size, shuffle_each_epoch=False)
             lr, hr = lr.to(self.device), hr.to(self.device)
             sr = self.predict(lr)
-            losses.append(self.loss(hr, sr))
-            metrics.append(self.metric(hr, sr))
+            losses.append(self.loss(hr, sr).numpy())
+            metrics.append(self.metric(hr, sr).numpy())
 
-        metric = torch.mean(metrics).numpy()
-        loss = torch.mean(losses).numpy()
+        metric = np.mean(metrics)
+        loss = np.mean(losses)
         return loss, metric
 
     def train(self, train_set, valid_set, batch_size, 
@@ -77,8 +77,8 @@ class SRCNN:
             lr, hr, _ = train_set.get_batch(batch_size)
             lr, hr = lr.to(self.device), hr.to(self.device)
             loss, metric = self.train_step(lr, hr)
-            loss_mean.append(loss)
-            metric_mean.append(metric)
+            loss_mean.append(loss.numpy())
+            metric_mean.append(metric.numpy())
 
             if (cur_step % save_every == 0) or (cur_step >= max_steps):
                 val_loss, val_metric = self.evaluate(valid_set)
