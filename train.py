@@ -59,7 +59,7 @@ srcnn = SRCNN(architecture)
 srcnn.setup(optimizer=torch.optim.Adam(srcnn.model.parameters(), lr=2e-5),
             loss=torch.nn.MSELoss(),
             model_path=model_path,
-            ckpr_path=ckpt_path,
+            ckpt_path=ckpt_path,
             metric=PSNR)
 
 srcnn.load_checkpoint(ckpt_dir)
