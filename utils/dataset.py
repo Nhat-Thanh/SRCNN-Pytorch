@@ -40,8 +40,8 @@ class dataset:
             hr_image = norm01(hr_image)
             lr_image = norm01(lr_image)
 
-            h = hr_image.shape[0]
-            w = hr_image.shape[1]
+            h = hr_image.shape[1]
+            w = hr_image.shape[2]
             for x in np.arange(start=0, stop=h-lr_crop_size, step=step):
                 for y in np.arange(start=0, stop=w-lr_crop_size, step=step):
                     subim_data  = lr_image[:, x : x + lr_crop_size, y : y + lr_crop_size]
