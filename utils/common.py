@@ -71,14 +71,14 @@ def gaussian_blur(src, ksize=3, sigma=0.5):
     return blur_image
     
 def upscale(src, scale):
-    h = int(src.shape[0] * scale)
-    w = int(src.shape[1] * scale)
+    h = int(src.shape[1] * scale)
+    w = int(src.shape[2] * scale)
     image = resize_bicubic(src, h, w)
     return image
 
 def downscale(src, scale):
-    h = int(src.shape[0] / scale)
-    w = int(src.shape[1] / scale)
+    h = int(src.shape[1] / scale)
+    w = int(src.shape[2] / scale)
     image = resize_bicubic(src, h, w)
     return image
 
