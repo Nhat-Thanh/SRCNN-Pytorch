@@ -9,8 +9,9 @@ import numpy as np
 # -----------------------------------------------------------
 
 class SRCNN:
-    def __init__(self, architecture="915"):
-        self.model = SRCNN_model(architecture)
+    def __init__(self, architecture, device):
+        self.device = device
+        self.model = SRCNN_model(architecture).to(device)
         self.optimizer = None
         self.loss =  None
         self.metric = None
