@@ -62,9 +62,9 @@ class dataset:
         if not exists(self.data_file):
             ValueError(f"\n{self.data_file} and {self.labels_file} DO NOT EXIST\n")
         self.data = np.load(self.data_file)
-        self.data = torch.Tensor(self.data)
+        self.data = torch.as_tensor(self.data)
         self.labels = np.load(self.labels_file)
-        self.labels = torch.Tensor(self.labels)
+        self.labels = torch.as_tensor(self.labels)
     
     def get_batch(self, batch_size, shuffle_each_epoch=True):
         # Ignore remaining dataset because of  

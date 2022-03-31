@@ -128,6 +128,6 @@ def shuffle(X, Y):
         ValueError("X and Y must have the same number of elements")
     indices = np.arange(0, X.shape[0])
     np.random.shuffle(indices)
-    X = torch.gather(X, indices)
-    Y = torch.gather(Y, indices)
+    X = torch.gather(X, torch.as_tensor(indices))
+    Y = torch.gather(Y, torch.as_tensor(indices))
     return X, Y
