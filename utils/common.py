@@ -83,8 +83,8 @@ def downscale(src, scale):
     return image
 
 def make_lr(src, scale=3):
-    h = src.shape[0]
-    w = src.shape[1]
+    h = src.shape[1]
+    w = src.shape[2]
     lr_image = downscale(src, scale)
     lr_image = resize_bicubic(lr_image, h, w)
     return lr_image
