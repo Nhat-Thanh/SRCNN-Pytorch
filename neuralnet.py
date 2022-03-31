@@ -18,7 +18,7 @@ class SRCNN_model(nn.Module):
         nn.init.normal_(self.nonlinear_map.weight, mean=0.0, std=0.001)
         nn.init.zeros_(self.nonlinear_map.bias)
 
-        self.recon = nn.Conv2d(in_channels=3, out_channels=64, kernel_size=5)
+        self.recon = nn.Conv2d(in_channels=32, out_channels=3, kernel_size=5)
         nn.init.normal_(self.recon.weight, mean=0.0, std=0.001)
         nn.init.zeros_(self.recon.bias)
     
