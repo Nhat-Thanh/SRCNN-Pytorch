@@ -47,6 +47,7 @@ class SRCNN:
         isEnd = False
         while isEnd == False:
             lr, hr, isEnd = dataset.get_batch(batch_size, shuffle_each_epoch=False)
+            lr, hr = lr.to(self.device), hr.to(self.device)
             sr = self.predict(lr)
             losses.append(self.loss(hr, sr))
             metrics.append(self.metric(hr, sr))
