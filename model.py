@@ -51,8 +51,8 @@ class SRCNN:
             sr = self.predict(lr)
             loss = self.loss(hr, sr).cpu()
             metric = self.metric(hr, sr).cpu()
-            losses.append(loss.numpy())
-            metrics.append(metric.numpy())
+            losses.append(loss.detach().numpy())
+            metrics.append(metric.detach().numpy())
 
         metric = np.mean(metrics)
         loss = np.mean(losses)
