@@ -74,6 +74,7 @@ class SRCNN:
         while cur_step < max_steps:
             cur_step += 1
             lr, hr, _ = train_set.get_batch(batch_size)
+            lr, hr = lr.to(self.device), hr.to(self.device)
             loss, metric = self.train_step(lr, hr)
             loss_mean.append(loss)
             metric_mean.append(metric)

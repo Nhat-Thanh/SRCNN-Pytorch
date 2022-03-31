@@ -58,13 +58,13 @@ class dataset:
         np.save(self.data_file, data)
         np.save(self.labels_file, labels)
 
-    def load_data(self, device):
+    def load_data(self):
         if not exists(self.data_file):
             ValueError(f"\n{self.data_file} and {self.labels_file} DO NOT EXIST\n")
         self.data = np.load(self.data_file)
-        self.data = torch.as_tensor(self.data).to(device)
+        self.data = torch.as_tensor(self.data)
         self.labels = np.load(self.labels_file)
-        self.labels = torch.as_tensor(self.labels).to(device)
+        self.labels = torch.as_tensor(self.labels)
     
     def get_batch(self, batch_size, shuffle_each_epoch=True):
         # Ignore remaining dataset because of  
