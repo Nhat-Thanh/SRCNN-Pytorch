@@ -55,18 +55,19 @@ test_set.load_data()
 #  Train
 # -----------------------------------------------------------
 
-srcnn = SRCNN(architecture)
-srcnn.setup(optimizer=torch.optim.Adam(srcnn.model.parameters(), lr=2e-5),
-            loss=torch.nn.MSELoss(),
-            model_path=model_path,
-            ckpt_path=ckpt_path,
-            metric=PSNR)
+with torch.cuda.device(0):
+    srcnn = SRCNN(architecture)
+    srcnn.setup(optimizer=torch.optim.Adam(srcnn.model.parameters(), lr=2e-5),
+                loss=torch.nn.MSELoss(),
+                model_path=model_path,
+                ckpt_path=ckpt_path,
+                metric=PSNR)
 
-srcnn.load_checkpoint(ckpt_path)
-srcnn.train(train_set, valid_set, 
-            steps=steps, batch_size=batch_size,
-            save_best_only=save_best_only, 
-            save_every=save_every)
+    srcnn.load_checkpoint(ckpt_path)
+    srcnn.train(train_set, valid_set, 
+                steps=steps, batch_size=batch_size,
+                save_best_only=save_best_only, 
+                save_every=save_every)
 
 
 # -----------------------------------------------------------
