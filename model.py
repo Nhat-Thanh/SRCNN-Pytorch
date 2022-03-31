@@ -16,6 +16,7 @@ class SRCNN:
         self.metric = None
         self.model_path = None
         self.ckpt_path = None
+        self.ckpt_man = None
     
     def setup(self, optimizer, loss, metric, model_path, ckpt_path):
         self.optimizer = optimizer
@@ -56,8 +57,10 @@ class SRCNN:
     def train(self, train_set, valid_set, batch_size, 
               steps, save_every=1, save_best_only=False):
         
-        cur_step = self.ckpt_man['step']
-        max_steps = steps + self.ckpt['step']
+        cur_step = 0
+        if self.ckpt_man is not None:
+            cur_step = self.ckpt_man['step']
+        max_steps = cur_step + steps
 
         prev_loss = np.inf
         if save_best_only and exists(self.model_path):
