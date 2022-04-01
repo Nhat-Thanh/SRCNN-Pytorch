@@ -1,6 +1,5 @@
-from pickletools import optimize
-from utils.common import exists
 from neuralnet import SRCNN_model
+from utils.common import exists
 import torch
 import numpy as np
 
@@ -18,7 +17,7 @@ class SRCNN:
         self.model_path = None
         self.ckpt_path = None
         self.ckpt_man = None
-    
+
     def setup(self, optimizer, loss, metric, model_path, ckpt_path):
         self.optimizer = optimizer
         self.loss = loss
@@ -26,22 +25,22 @@ class SRCNN:
         # @the best model weights
         self.model_path = model_path
         self.ckpt_path = ckpt_path
-    
+
     def load_checkpoint(self, ckpt_path):
         if not exists(ckpt_path):
             return
         self.ckpt_man = torch.load(ckpt_path)
         self.optimizer.load_state_dict(self.ckpt_man['optimizer'])
         self.model.load_state_dict(self.ckpt_man['model'])
-    
+
     def load_weights(self, filepath):
-        self.model.load_state_dict(torch.load(filepath))
+        self.model.load_state_dict(torch.load(filepath, map_location=torch.device(self.device)))
 
     def predict(self, lr):
         self.model.train(False)
         sr = self.model(lr)
         return sr
-    
+
     def evaluate(self, dataset, batch_size=64):
         losses, metrics = [], []
         isEnd = False
@@ -60,7 +59,7 @@ class SRCNN:
 
     def train(self, train_set, valid_set, batch_size, 
               steps, save_every=1, save_best_only=False):
-        
+
         cur_step = 0
         if self.ckpt_man is not None:
             cur_step = self.ckpt_man['step']
@@ -94,7 +93,7 @@ class SRCNN:
                             'model': self.model.state_dict(),
                             'optimizer': self.optimizer.state_dict()
                             }, self.ckpt_path)
-                
+
                 if save_best_only and val_loss > prev_loss:
                     continue
                 prev_loss = val_loss
@@ -110,9 +109,9 @@ class SRCNN:
 
         loss = self.loss(hr, sr)
         loss.backward()
-        
+
         self.optimizer.step()
-        
+
         metric = self.metric(hr, sr)
         loss = loss.cpu()
         metric = metric.cpu()

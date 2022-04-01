@@ -1,4 +1,3 @@
-from pyexpat import model
 from utils.dataset import dataset
 from utils.common import PSNR
 from model import SRCNN

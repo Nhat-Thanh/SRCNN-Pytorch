@@ -4,9 +4,9 @@ import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--scale',        type=float, default=2,                                  help='-')
-parser.add_argument('--architecture', type=str,   default="915",                              help='-')
-parser.add_argument("--image-path",   type=str,   default="dataset/test1.png",                help='-')
-parser.add_argument("--ckpt-path",    type=str,   default="checkpoint/SRCNN915/SRCNN-915.pt", help='-')
+parser.add_argument('--architecture', type=str,   default="955",                              help='-')
+parser.add_argument("--image-path",   type=str,   default="dataset/test2.png",                help='-')
+parser.add_argument("--ckpt-path",    type=str,   default="checkpoint/SRCNN955/SRCNN-955.pt", help='-')
 
 FLAGS, unparsed = parser.parse_known_args()
 architecture = FLAGS.architecture
@@ -32,7 +32,7 @@ write_image("bicubic.png", bicubic_image)
 # preprocess lr image 
 # -----------------------------------------------------------
 
-lr_image = gaussian_blur(lr_image, sigma=0.3)
+lr_image = gaussian_blur(lr_image, sigma=0.4)
 lr_image = upscale(lr_image, scale)
 lr_image = rgb2ycbcr(lr_image)
 lr_image = norm01(lr_image)
