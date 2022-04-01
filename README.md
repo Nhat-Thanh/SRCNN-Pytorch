@@ -66,7 +66,7 @@ I evaluated models with Set5, Set14, BSD100 and Urban100 dataset by PSNR:
 Source: game ZingSpeed Mobile
 
 ## References
-- Image Super-Resolution Using Deep Convolutional Networks: https://arxiv.org/pdf/1501.00092.pdf
+- Image Super-Resolution Using Deep Convolutional Networks: https://arxiv.org/abs/1501.00092
 - SRCNN Matlab code: http://mmlab.ie.cuhk.edu.hk/projects/SRCNN.html
 - T91: http://vllab.ucmerced.edu/wlai24/LapSRN/results/SR_training_datasets.zip
 - Set5: https://filebox.ece.vt.edu/~jbhuang/project/selfexsr/Set5_SR.zip
