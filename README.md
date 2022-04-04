@@ -61,7 +61,7 @@ I evaluated models with Set5, Set14, BSD100 and Urban100 dataset by PSNR:
 
 <div align="center">
   <img src="./README/example.png" width="1000">  
-  <p><strong>Bicubic x2 (left), SRCNN-935 x2 (right).</strong></p>
+  <p><strong>Bicubic x2 (left), SRCNN-955 x2 (right).</strong></p>
 </div>
 Source: game ZingSpeed Mobile
 
