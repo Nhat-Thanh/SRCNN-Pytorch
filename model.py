@@ -1,7 +1,7 @@
 from neuralnet import SRCNN_model
 import numpy as np
 import os
-from utils.common import exists
+from utils.common import exists, tensor2numpy
 import torch
 
 class logger:
