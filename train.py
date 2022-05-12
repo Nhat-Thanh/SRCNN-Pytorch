@@ -35,7 +35,7 @@ if (ckpt_dir == "") or (ckpt_dir == "default"):
     ckpt_dir = f"checkpoint/SRCNN{architecture}"
 
 model_path = os.path.join(ckpt_dir, f"SRCNN-{architecture}.pt")
-ckpt_path = os.path.join(ckpt_dir, f"ckpt.pt")
+ckpt_path = os.path.join(ckpt_dir, "ckpt.pt")
 
 
 # -----------------------------------------------------------

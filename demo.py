@@ -1,4 +1,3 @@
-from numpy import pad
 from utils.common import *
 from model import SRCNN
 import argparse
