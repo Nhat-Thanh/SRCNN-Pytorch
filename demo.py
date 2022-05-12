@@ -6,7 +6,7 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument('--scale',        type=int,   default=2,                   help='-')
 parser.add_argument("--ckpt-path",    type=str,   default="",                  help='-')
-parser.add_argument('--architecture', type=str,   default="955",               help='-')
+parser.add_argument('--architecture', type=str,   default="915",               help='-')
 parser.add_argument("--image-path",   type=str,   default="dataset/test1.png", help='-')
 
 FLAGS, unparsed = parser.parse_known_args()
