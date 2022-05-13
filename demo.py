@@ -13,11 +13,11 @@ image_path = FLAGS.image_path
 
 architecture = FLAGS.architecture
 if architecture not in ["915", "935", "955"]:
-    ValueError("architecture must be 915, 935, 955")
+    raise ValueError("architecture must be 915, 935, 955")
 
 scale = FLAGS.scale
 if scale not in [2, 3, 4]:
-    ValueError("must be 2, 3 or 4")
+    raise ValueError("must be 2, 3 or 4")
 
 ckpt_path = FLAGS.ckpt_path
 if (ckpt_path == "") or (ckpt_path == "default"):

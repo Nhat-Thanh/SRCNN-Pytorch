@@ -7,7 +7,7 @@ class SRCNN_model(nn.Module):
         super(SRCNN_model, self).__init__()
 
         if architecture not in ["915", "935", "955"]:
-            ValueError("architecture must be 915, 935 or 955")
+            raise ValueError("architecture must be 915, 935 or 955")
         k = int(architecture[1])
 
         self.patch_extraction = nn.Conv2d(in_channels=3, out_channels=64, kernel_size=9)

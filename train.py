@@ -28,7 +28,7 @@ save_best_only = (FLAGS.save_best_only == 1)
 
 architecture = FLAGS.architecture
 if architecture not in ["915", "935", "955"]:
-    ValueError("architecture must be 915, 935, 955")
+    raise ValueError("architecture must be 915, 935, 955")
 
 ckpt_dir = FLAGS.ckpt_dir
 if (ckpt_dir == "") or (ckpt_dir == "default"):
